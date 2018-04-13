@@ -20,9 +20,7 @@ class App extends Component {
 }
 
 function mapStateToProps(state){
-  return{
-    
-  }
+  return state;
 }
 
 export default connect(mapStateToProps) (App);

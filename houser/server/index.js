@@ -15,7 +15,13 @@ const express = require('express')
         app.set('db', dbInstance)
     });
 
-    app.get('/api/houses')
+    app.get('/api/houses', controller.read)
+
+    app.post('/api/house', controller.create)
+
+    app.put('/api/house/:id', controller.update)
+
+    app.delete('/api/house/:id', controller.delete)
 
 
 
