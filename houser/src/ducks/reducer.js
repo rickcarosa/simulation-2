@@ -3,22 +3,49 @@ const initialState = {
     address: '',
     city: '',
     state: '',
-    zip: 0
+    zip: '',
+    image: '',
+    mortgage: '',
+    rent: ''
+
 }
 
-const UPDATE_NAME = "UPDATE_NAME";
+const UPDATE_StepOne = "UPDATE_StepOne";
+const UPDATE_StepTwo = "UPDATE_StepTwo";
+const UPDATE_StepThree = "UPDATE_StepThree";
 
-export function updateName(name){
+
+export function updateStepOne(name, address, city, state, zip){
     return{
-        type: UPDATE_NAME,
-        payload: name
+        type: UPDATE_StepOne,
+        payload: {name, address, city, state, zip}
     }
 }
 
+export function updateStepTwo(image){
+    return{
+        type: UPDATE_StepTwo,
+        payload: {image}
+    }
+}
+
+export function updateStepThree(mortgage, rent){
+    return{
+        type: UPDATE_StepThree,
+        payload: {mortgage, rent}
+    }
+}
+
+
+
 function reducer(state = initialState, action){
     switch(action.type){
-        case UPDATE_NAME:
-            return Object.assign({}, state, {name: action.payload})
+        case UPDATE_StepOne:
+            return Object.assign({}, state, action.payload);
+        case UPDATE_StepTwo:
+            return Object.assign({}, state, action.payload);
+        case UPDATE_StepThree:
+            return Object.assign({}, state, action.payload);
         default:
             return state;
     }

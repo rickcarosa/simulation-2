@@ -13,10 +13,6 @@ class Dashboard extends Component {
         this.deleteHouse = this.deleteHouse.bind(this);
     }
 
-    componentDidMount(){
-        this.getHouses()
-    }
-
     getHouses(){
         axios.get('/api/houses').then( response => {   
         this.setState({
@@ -24,6 +20,10 @@ class Dashboard extends Component {
       })
     })
   }
+
+    componentDidMount(){
+        this.getHouses()
+    }
 
     deleteHouse(id){
         axios.delete(`/api/house/${id}`).then(() => {
@@ -46,7 +46,7 @@ render(){
     return(
         <div className = "Dashboard">
 
-            Dashboard <Link to = '/wizard'> <button className = 'btn'> Add New Property </button> </Link>
+            Dashboard <Link to = '/wizard/StepOne'> <button className = 'btn'> Add New Property </button> </Link>
 
             {houses}
         </div>

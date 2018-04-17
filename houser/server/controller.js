@@ -14,9 +14,9 @@ module.exports = {
 
     create: (request, response) => {
         const dbInstance = request.app.get('db')
-        const {name, address, city, state, zip} = request.body
-
-        dbInstance.create_house([name, address, city, state, zip])
+        const {name, address, city, state, zip, image, mortgage, rent} = request.body
+        
+        dbInstance.create_house([name, address, city, state, zip, image, mortgage, rent])
             .then( () => response.status(200).send("all good") )
             .catch( (err) => {
                 console.log(err)
