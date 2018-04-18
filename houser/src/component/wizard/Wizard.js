@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import StepOne from '../wizard/StepOne';
 import StepTwo from '../wizard/StepTwo';
@@ -26,7 +25,6 @@ render(){
 
     return(
         <div className = "Wizard">
-            Wizard <Link to = '/'> <button className = 'btn'> Cancel </button> </Link>
                 <Route path = '/wizard/stepOne' component = {StepOne} />
                 <Route path = '/wizard/stepTwo' component = {StepTwo} />
                 <Route path = '/wizard/stepThree' component = {StepThree} />

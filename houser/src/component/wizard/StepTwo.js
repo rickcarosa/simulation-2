@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateStepTwo} from '../../ducks/reducer';
+import {cancel} from '../../ducks/reducer';
 
 
 class StepTwo extends Component {
@@ -32,6 +33,11 @@ render(){
 
     return(
         <div className = "StepTwo">
+
+            Add New Listing <Link to = '/'><button className = "cancel" type = "submit" 
+                                    onClick = {() => this.props.cancel()}> Cancel </button> </Link>
+
+
             <p> Image URL </p>
             <input value = {this.state.image} onChange = { (event) => this.updateImage(event.target.value)}/> 
             <Link to = '/wizard/StepOne'> <button className = 'btn' onClick = {() => updateStepTwo(this.state.image)}> Previous Step </button> </Link>
@@ -48,4 +54,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {updateStepTwo}) (StepTwo);
+export default connect(mapStateToProps, {updateStepTwo, cancel}) (StepTwo);

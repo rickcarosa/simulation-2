@@ -44,7 +44,7 @@ render(){
     })
 
     return(
-        <div className = "Dashboard">
+        <div>
 
             Dashboard <Link to = '/wizard/StepOne'> <button className = 'btn'> Add New Property </button> </Link>
 

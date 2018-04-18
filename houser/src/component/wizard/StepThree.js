@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {updateStepThree} from '../../ducks/reducer';
+import {cancel} from '../../ducks/reducer';
 
 class StepThree extends Component {
     constructor(){
@@ -40,12 +41,16 @@ render(){
 
     return(
         <div className = "StepThree">
+
+            Add New Listing <Link to = '/'><button className = "cancel" type = "submit" 
+                                    onClick = {() => this.props.cancel()}> Cancel </button> </Link>
+
             <p> Monthly Mortgage </p>
             <input value = {this.state.mortgage} onChange = { (event) => this.updateMortgage(event.target.value)}/>
             <p> Monthly Rent </p>
             <input value = {this.state.rent} onChange = { (event) => this.updateRent(event.target.value)}/> 
             <Link to = '/wizard/StepTwo'> <button className = 'btn' onClick = {() => updateStepThree(this.state.mortgage, this.state.rent)}> Previous Step </button> </Link>
-            <button className = "Add" onClick = {() => this.addHouse()}> Complete </button>
+            <Link to = '/'> <button className = "Add" onClick = {() => this.addHouse()}> Complete </button> </Link>
         </div>
     )
   }
@@ -58,4 +63,4 @@ function mapStateToProps(state){
     }
 }
 
-export default connect(mapStateToProps, {updateStepThree}) (StepThree);
+export default connect(mapStateToProps, {updateStepThree, cancel}) (StepThree);

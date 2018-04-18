@@ -13,6 +13,7 @@ const initialState = {
 const UPDATE_StepOne = "UPDATE_StepOne";
 const UPDATE_StepTwo = "UPDATE_StepTwo";
 const UPDATE_StepThree = "UPDATE_StepThree";
+const CANCEL = "cancel";
 
 
 export function updateStepOne(name, address, city, state, zip){
@@ -36,6 +37,13 @@ export function updateStepThree(mortgage, rent){
     }
 }
 
+export function cancel(initialState){
+    return{
+        type: cancel,
+        payload: initialState
+    }
+}
+
 
 
 function reducer(state = initialState, action){
@@ -46,6 +54,8 @@ function reducer(state = initialState, action){
             return Object.assign({}, state, action.payload);
         case UPDATE_StepThree:
             return Object.assign({}, state, action.payload);
+        case CANCEL:
+            return Object.assign({}, action.payload)
         default:
             return state;
     }
